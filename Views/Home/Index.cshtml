@@ -1,0 +1,47 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+<div class="jumbotron">
+    <table class="table">
+        <tr>
+            <td>
+                <p><b>ФИО студента</b></p>
+            </td>
+            <td>
+                <p><b>Предмет</b></p>
+            </td>
+            <td>
+                <p><b>Оценка</b></p>
+            </td>
+            <td>
+                <p><b>Дата оценки</b></p>
+            </td>
+        </tr>
+        @foreach (var s in ViewBag.Scores)
+        {
+    <tr>
+        <td>
+            <p>@s.Student.Fio</p>
+        </td>
+        <td>
+            <p>@s.Subject.Title</p>
+        </td>
+        <td>
+            <p>@s.ScoreNum</p>
+        </td>
+        <td>
+            <p>@s.Date.ToString("yyyy-MM-dd")</p>
+        </td>
+        <td>           
+            @Html.ActionLink("Удалить", "Delete", new { id = s.Id })
+        </td>
+    </tr>
+        }
+    </table>
+    
+
+    <p>
+        <a class="btn btn-default" href="/Score/Create">Добавить запись</a>
+    </p>
+</div>
